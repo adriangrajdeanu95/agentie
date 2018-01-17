@@ -1,0 +1,8 @@
+MANIFEST.in
+agentie/__init__.py
+agentie/agentie.py
+agentie.egg-info/PKG-INFO
+agentie.egg-info/SOURCES.txt
+agentie.egg-info/dependency_links.txt
+agentie.egg-info/requires.txt
+agentie.egg-info/top_level.txt
