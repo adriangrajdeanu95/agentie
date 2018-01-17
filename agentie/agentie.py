@@ -18,17 +18,12 @@ db.init_app(app)
 
 @app.route('/')
 def index():
-    return 'Index Page'
-
-
-@app.route('/hello/')
-def hello():
-    return 'Hello, World'
+    return render_template('index.html')
 
 
 @app.route('/login/')
 def login():
-    return 'login page'
+    return render_template('login.html')
 
 
 @app.route('/register/')
