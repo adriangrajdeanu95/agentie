@@ -39,7 +39,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html" title="HOME"><i class="ion-paper-airplane"></i> euro <span>travel</span></a>
+				<a class="navbar-brand" href="{{url_for('index')}}" title="HOME"><i class="ion-paper-airplane"></i> euro <span>travel</span></a>
 			</div> <!-- /.navbar-header -->
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,89 +49,50 @@
 	  	</div><!-- /.container -->
 	</nav>
 
-<!-- Home -->
-		<div id="header">
-		    <div class="flexslider">
-		        <ul class="slides">
-		            <li class="slider-item" style="background-image: url('{{ url_for('static', filename='images/item-1.png') }}')">
-		                <div class="intro container">
-		                    <div class="inner-intro">
-		                        <h1 class="header-title">
-		                            <span>traveling</span> always "good idea"
-		                        </h1>
-		                        <p class="header-sub-title">
-		                            it leaves you speecless, then turns your into a storyteller.
-		                        </p>
-		                        <a href="#whatever" class="btn custom-btn">
-		                            book now
-		                        </a>
-		                    </div>
-		                </div>
-		            </li> <!-- /.slider-item -->
-		            <li class="slider-item" style="background-image: url('{{ url_for('static', filename='images/item-2.png') }}')">
-		                <div class="intro">
-		                    <div class="inner-intro">
-		                        <h1 class="header-title">
-		                            to <span>travel</span> is to <span>live</span>
-		                        </h1>
-		                        <p class="header-sub-title">
-		                            it leaves you speecless, then turns your into a storyteller.
-		                        </p>
-		                        <button class="btn custom-btn">
-		                            book now
-		                        </button>
-		                    </div>
-		                </div>
-		            </li> <!-- /.slider-item -->
-		        </ul> <!-- /.slides -->
-		    </div> <!-- /.flexslider -->
-		</div> <!-- /#header -->
 <!-- Find a Tour -->
 	<section class="tour section-wrapper container" id="whatever">
 		<h2 class="section-title">
-			Find a Tour
+			Choose your trip
 		</h2>
 		<p class="section-subtitle">
 			Where would you like to go?
 		</p>
-		<form>
-		<div class="row">
+		{% for t in trip %}
+		<div class="row" style="color:black">
 			<div class="col-md-3 col-sm-6">
-				<form role="form" class="form-dropdown">
-					<div class="form-group">
-						<select class="form-control border-radius" id="sel1" name="selected_city">
-							{% for city in cities %}
-							<option>{{ city[1] }}</option>
-							{% endfor %}
-						</select>
-					</div>
-				</form>
+				<h1>{{ city }}</h1>
 			</div>
 
 			<div class="col-md-3 col-sm-6">
-				<div class="input-group">
-					<input type="text" class="form-control border-radius border-right" name="selected_stars" placeholder="Stars"/>
-					<span class="input-group-addon border-radius custom-addon">
-					</span>
-				</div>
+				<h2>{{ t[4] }}</h2>
 			</div>
 
 			<div class="col-md-3 col-sm-6">
-				<div class="input-group">
-					<input type="text" class="form-control border-radius border-right" name="selected_price" placeholder="Maximum Pricing (EUR)"/>
-					<span class="input-group-addon border-radius custom-addon">
-					</span>
-				</div>
+				<h2>{{ t[5] }}</h2>
 			</div>
 
 			<div class="col-md-3 col-sm-6">
-				<button class="btn btn-default border-radius custom-button" type=submit formmethod="POST">
-					Search
-				</button>
+				<h2>{{ t[1] }} Euro</h2>
 			</div>
-
 		</div>
-		</form>
+		<div class="row" style="color:#696969">
+			<div class="col-md-3 col-sm-6">
+			Data plecarii {{ t[2] }}
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+			Durata - {{ t[3] }} zile
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+			{{ stars }} stele
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+				<a href="{{url_for('trip', trip_id=t[0])}}" type="button" class="btn btn-default">BOOK</a>
+			</div>
+		</div>
+		{% endfor %}
 	</section> <!-- /.tour -->
 
 

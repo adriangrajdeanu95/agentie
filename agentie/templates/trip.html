@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en-US"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="noIE" lang="en-US">
+<!--<![endif]-->
+	<head>
+		<!-- meta -->
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>Euro Travel</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/flexslider.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+			<!--[if lt IE 9]>
+				<script src="{{ url_for('static', filename='js/html5shiv.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/respond.js') }}"></script>
+			<![endif]-->
+
+			<!--[if IE 8]>
+		    	<script src="{{ url_for('static', filename='js/selectivizr.js') }}"></script>'
+		    <![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{{url_for('index')}}" title="HOME"><i class="ion-paper-airplane"></i> euro <span>travel</span></a>
+			</div> <!-- /.navbar-header -->
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+		    </div><!-- /.navbar-collapse -->
+	  	</div><!-- /.container -->
+	</nav>
+
+<!-- Find a Tour -->
+	<section class="tour section-wrapper container" id="whatever">
+		<h2 class="section-title">
+			Cazarea
+		</h2>
+		<div class="row" style="color:black">
+			<div class="col-md-3 col-sm-6">
+				<h1>{{ trip[11] }}</h1>
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+				<h2>{{ trip[12] }} stele</h2>
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+				<h2>Rating: {{ trip[13] }}</h2>
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+				<h2>{{ trip[14] }}</h2>
+			</div>
+		</div>
+		<div class="row" style="color:#696969">
+			<div class="col-md-3 col-sm-6">
+			{% if trip[15] %} All-Inclusive {% endif %}
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+			{% if trip[24] %} Mic Dejun inclus {% endif %}
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+			{% if trip[21] %} Internet in camera {% endif %}
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+			{% if trip[19] %} Aer Conditionat {% endif %}
+			</div>
+		</div>
+	</section> <!-- /.tour -->
+
+
+<!-- Our Blazzing offers -->
+	<section class="offer section-wrapper">
+		<div class="container">
+			<h2 class="section-title">
+			Transport
+			</h2>
+			<div class="row" style="color:black">
+				<div class="col-md-4 col-sm-6">
+					<h1>{{ transp[19] }}</h1>
+				</div>
+
+				<div class="col-md-4 col-sm-6">
+					<h2>Plecare:<br> {{ transp[1] }}</h2>
+				</div>
+
+				<div class="col-md-4 col-sm-6">
+					<h2>{{ transp[13] }} km</h2>
+				</div>
+			</div>
+			<div class="row" style="color:#696969">
+				<div class="col-md-4 col-sm-6">
+				{% if transp[15] %} <i class="fa fa-plane fa-4x" aria-hidden="true"></i> {% endif %}
+				</div>
+
+				<div class="col-md-4 col-sm-6">
+				{% if transp[16] %} Incarcator {% endif %}
+				</div>
+
+				<div class="col-md-4 col-sm-6">
+				{% if transp[17] %} Wi-fi {% endif %}
+				</div>
+
+			</div>
+		</div> <!-- /.container -->
+	</section>
+	<!-- /.offer -->
+
+	<!-- Find a Tour -->
+	<section class="tour section-wrapper container" id="whatever">
+		<h2 class="section-title">
+			Book your trip
+		</h2>
+		<form style="color:#696969">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input name="name" class="form-control" id="name">
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input name="email" class="form-control" id="email">
+			</div>
+			<div class="form-group">
+				<label for="cnp">CNP:</label>
+				<input name="cnp" class="form-control" id="cnp">
+			</div>
+			<div class="form-group">
+				<label for="asig-sanatate">Health Ins.:</label>
+				<input name="asig-sanatate" class="form-control" id="asig-sanatate">
+			</div>
+			<div class="form-group">
+				<label for="telefon">Phone:</label>
+				<input name="telefon" class="form-control" id="telefon">
+			</div>
+			<div class="form-group">
+				<label for="orase">City:</label>
+				<select class="form-control" name="selected_city" id="orase">
+					{% for city in cities %}
+					<option>{{ city[1] }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<button type="submit" class="btn btn-default" formmethod="POST">Submit</button>
+		</form>
+	</section>
+	<!-- Book -->
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-4">
+					<div class="text-left">
+						&copy; Copyright Euro Travels
+					</div>
+				</div>
+
+				<div class="col-xs-4">
+					<div class="top">
+						<a href="#header">
+							<i class="ion-arrow-up-b"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</footer>
+
+
+	<script src="{{ url_for('static', filename='js/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.flexslider.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+
+
+
+
+</body>
+</html>

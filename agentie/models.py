@@ -110,8 +110,8 @@ class Orase(Base):
     __tablename__ = 'Orase'
 
     ID_Oras = Column(Integer, primary_key=True, server_default=text("nextval('Orase_ID_Oras_seq'::regclass)"))
-    Nume = Column(String, nullable=False)
-    Tara = Column(String, nullable=False)
+    Nume = Column(String(20), nullable=False)
+    Tara = Column(String(20), nullable=False)
     Rating = Column(Integer, nullable=False)
 
 class Transport(Base):
