@@ -16,31 +16,23 @@
 <body>
 <section class="section-wrapper container" id="whatever">
 		<h2 class="section-title">
-			Orase
+			Modifica orasul
 		</h2>
-        {% for city in cities%}
-		<div class="row" style="color:black">
-			<div class="col-md-3 col-sm-6">
-                <h1><a href="{{ url_for('edit_city', id=city[0]) }}">{{ city[1] }}</a></h1>
+        <form style="color:#696969">
+			<div class="form-group">
+				<label for="name">Nume:</label>
+				<input name="name" class="form-control" id="name" placeholder="{{ city[1] }}">
 			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<h2>{{ city[2] }} </h2>
+			<div class="form-group">
+				<label for="country">Tara:</label>
+				<input name="country" class="form-control" id="country" placeholder="{{ city[2] }}">
 			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<h2>rating: {{ city[3] }}</h2>
+			<div class="form-group">
+				<label for="rating">Rating:</label>
+				<input name="rating" class="form-control" id="rating" placeholder="{{ city[3] }}">
 			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<form>
-                    <a href="{{url_for('delete_city', id=city[0])}}">
-                        <button type="submit" class="btn btn-danger" formmethod="post">Delete</button>
-                    </a>
-                </form>
-			</div>
-		</div>
-        {% endfor %}
+			<button type="submit" class="btn btn-default" formmethod="POST">Submit</button>
+		</form>
 	</section>
 </body>
 </html>

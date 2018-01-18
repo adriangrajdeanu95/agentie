@@ -122,8 +122,49 @@ def trip(trip_id):
         return redirect(url_for('trip', trip_id=trip_id))
 
 
-@app.route('/admin/')
+@app.route('/admin/', methods=['GET', 'DELETE'])
 def admin():
     if session.get('logged-in') == True:
+        if request.method == 'GET':
+            engine = create_engine('postgresql://useragentie:pass@localhost:5432/agentie')
+            conn = engine.connect()
+            stmt = text('SELECT * FROM "Orase" ORDER BY "Nume"')
+            result = conn.execute(stmt)
+            cities = result.fetchall()
+            return render_template('admin.html', cities=cities)
         return 'admin page'
     return(redirect(url_for('login')))
+
+@app.route('/delete/city/<int:id>', methods=['POST'])
+def delete_city(id):
+    if session.get('logged-in') == True:
+        engine = create_engine('postgresql://useragentie:pass@localhost:5432/agentie')
+        conn = engine.connect()
+        stmt = text('DELETE FROM "Orase" WHERE "ID_Oras='+str(id))
+        conn.execute(stmt)
+    return(redirect(url_for('admin')))
+
+@app.route('/edit/city/<int:id>', methods=['GET', 'POST'])
+def edit_city(id):
+    if session.get('logged-in') == True:
+        if request.method == 'GET':
+            engine = create_engine('postgresql://useragentie:pass@localhost:5432/agentie')
+            conn = engine.connect()
+            stmt = text('SELECT * FROM "Orase" WHERE "ID_Oras"='+str(id))
+            result = conn.execute(stmt)
+            city = result.fetchone()
+            return render_template('edit-city.html', city=city)
+        if request.method == 'POST':
+            engine = create_engine('postgresql://useragentie:pass@localhost:5432/agentie')
+            conn = engine.connect()
+            if request.form['name']:
+                stmt = text('UPDATE "Orase" SET "Nume"=\''+str(request.form['name'])+'\' WHERE "ID_Oras"=' + str(id))
+                conn.execute(stmt)
+            if request.form['country']:
+                stmt = text('UPDATE "Orase" SET "Tara"=\''+str(request.form['country'])+'\' WHERE "ID_Oras"=' + str(id))
+                conn.execute(stmt)
+            if request.form['name']:
+                stmt = text('UPDATE "Orase" SET "Rating"='+str(request.form['rating'])+' WHERE "ID_Oras"=' + str(id))
+                conn.execute(stmt)
+            print(request.form['name'])
+    return(redirect(url_for('admin')))
